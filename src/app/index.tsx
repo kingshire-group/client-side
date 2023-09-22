@@ -8,31 +8,33 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 
-import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './pages/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'utils/theme/theme';
 
 export function App() {
   const { i18n } = useTranslation();
   return (
-    <BrowserRouter>
-      <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-        htmlAttributes={{ lang: i18n.language }}
-      >
-        <meta name="description" content="A React Boilerplate application" />
-      </Helmet>
-
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <GlobalStyle />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Helmet
+          titleTemplate="%s - Kinglancer"
+          defaultTitle="Kinglancer"
+          htmlAttributes={{ lang: i18n.language }}
+        >
+          <meta
+            name="description"
+            content="A Website For Clients To Hire Freelancers"
+          />
+        </Helmet>
+        <GlobalStyle />
+        <Switch>
+          <Route path="/" render={() => <></>} />
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

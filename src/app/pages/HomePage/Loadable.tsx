@@ -15,14 +15,4 @@ const LoadingWrapper = styled.div`
   justify-content: center;
 `;
 
-export const HomePage = lazyLoad(
-  () => import('./index'),
-  module => module.HomePage,
-  {
-    fallback: (
-      <LoadingWrapper>
-        <LoadingIndicator />
-      </LoadingWrapper>
-    ),
-  },
-);
+export const HomePage = () => <></>;
