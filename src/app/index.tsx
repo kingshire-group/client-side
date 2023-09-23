@@ -13,7 +13,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'utils/theme/theme';
+import { theme } from 'styles/theme/themes';
 
 export function App() {
   const { i18n } = useTranslation();
