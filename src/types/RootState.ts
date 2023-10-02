@@ -1,5 +1,5 @@
-import { GithubRepoFormState } from 'app/pages/HomePage/Features/GithubRepoForm/slice/types';
 import { ThemeState } from 'styles/theme/slice/types';
+import { IDefaultLayoutState } from 'app/pages/DefaultLayout/slice/type';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -10,6 +10,6 @@ import { ThemeState } from 'styles/theme/slice/types';
 */
 export interface RootState {
   theme?: ThemeState;
-  githubRepoForm?: GithubRepoFormState;
+  defaultLayoutState?: IDefaultLayoutState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

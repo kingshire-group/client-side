@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  kingshare-marketplace:
+  kingshire-marketplace:
     build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: kingshare-marketplace
+    container_name: kingshire-marketplace
     restart: unless-stopped
     ports:
       - 3002:3002

@@ -1,36 +1,69 @@
 import { createGlobalStyle } from 'styled-components';
-import { StyleConstants } from './StyleConstants';
-/* istanbul ignore next */
+import Poppins100 from '../assets/fonts/poppins/static/Poppins-Thin.ttf';
+import Poppins200 from '../assets/fonts/poppins/static/Poppins-ExtraLight.ttf';
+import Poppins300 from '../assets/fonts/poppins/static/Poppins-Light.ttf';
+import Poppins400 from '../assets/fonts/poppins/static/Poppins-Regular.ttf';
+import Poppins500 from '../assets/fonts/poppins/static/Poppins-Medium.ttf';
+import Poppins600 from '../assets/fonts/poppins/static/Poppins-SemiBold.ttf';
+import Poppins700 from '../assets/fonts/poppins/static/Poppins-Bold.ttf';
+import Poppins800 from '../assets/fonts/poppins/static/Poppins-ExtraBold.ttf';
+
 export const GlobalStyle = createGlobalStyle`
-  html,
-  body {
+  html{
     height: 100%;
-    width: 100%;
-    line-height: 1.5;
+	  overflowX: hidden;
+	  overflowY: auto;
   }
-
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding-top: ${StyleConstants.NAV_BAR_HEIGHT};
-    background-color: ${p => p.theme.background};
+	height:100%;
+    background-color:#FFFFFF;
+	  font-family: Poppins-SemiBold;
+    margin: 0;
+    padding: 0;
   }
-
-  body.fontLoaded {
-    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  #root {
+    min-height: 100%;
+    min-width: 100%;
+    position:relative;
   }
-  
-  p,
-  label {
-    line-height: 1.5em;
+  @font-face {
+    font-family: "Poppins-Thin";
+		font-weight: 100;
+		src: local("Poppins-Thin"), url(${Poppins100}) format("truetype");
+	}
+	@font-face {
+    font-family: "Poppins-ExtraLight";
+		font-weight: 200;
+		src: local("Poppins-ExtraLight"), url(${Poppins200}) format("truetype");
+	}
+	@font-face {
+    font-family: "Poppins-Light";
+		font-weight: 300;
+		src: local("Poppins-Light"), url(${Poppins300}) format("truetype");
+	}
+  @font-face {
+    font-family: "Poppins-Regular";
+    src: local("Poppins-Regular"), url(${Poppins400}) format("truetype");
+		font-weight: 400;
   }
-
-  input, select, button {
-    font-family: inherit;
-    font-size: inherit;
-  }
-
-  .icon {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
+	@font-face {
+		font-family: "Poppins-Medium";
+		font-weight: 500;
+		src: local("Poppins-Medium"), url(${Poppins500}) format("truetype");
+	}
+	@font-face {
+		font-family: "Poppins-SemiBold";
+		font-weight: 600;
+		src: local("Poppins-SemiBold"), url(${Poppins600}) format("truetype");
+	}
+	@font-face {
+		font-family: "Poppins-Bold";
+		font-weight: 700;
+		src: local("Poppins-Bold"), url(${Poppins700}) format("truetype");
+	}
+	@font-face {
+		font-family: "Poppins-ExtraBold";
+		font-weight: 800;
+		src: local("Poppins-ExtraBold"), url(${Poppins800}) format("truetype");
+	}
 `;
