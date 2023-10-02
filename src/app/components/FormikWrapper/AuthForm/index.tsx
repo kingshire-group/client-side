@@ -4,12 +4,11 @@ import loginValidationSchema from 'app/components/Form/Validation/loginValidatio
 import signUpValidationSchema from 'app/components/Form/Validation/signupValidation';
 import { Button as MuiButton, Box as MuiBox } from '@mui/material';
 import { Box, Typography, Button, Spacer, Input } from 'app/components/Core';
-import { theme } from 'styles/theme/themes';
 import { withIcon } from 'app/components/Core/Input/withIcon';
 import { Visibility, VisibilityOff } from 'styled-icons/material';
 import { IAuthProps } from './types';
 import FormControl from '../../Form/FormControl';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';
 import { GoogleIcon } from 'assets/images';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +16,7 @@ import Grid from '@mui/material/Grid';
 
 const AuthController = (props: IAuthProps) => {
   const [inputType, setInputType] = React.useState(true);
-  let history = useHistory();
+  let navigate = useNavigate();
   const handleInputType = () => {
     setInputType(!inputType);
   };
@@ -227,7 +226,7 @@ const AuthController = (props: IAuthProps) => {
               justifyContent: 'center',
             }}
           >
-            <MuiButton variant="text" onClick={() => history.push('/login')}>
+            <MuiButton variant="text" onClick={() => navigate('/login')}>
               Login?
             </MuiButton>
           </MuiBox>
@@ -247,10 +246,7 @@ const AuthController = (props: IAuthProps) => {
             <Typography>
               New to Kings Hire?
               <span>
-                <MuiButton
-                  variant="text"
-                  onClick={() => history.push('/signup')}
-                >
+                <MuiButton variant="text" onClick={() => navigate('/signup')}>
                   Register
                 </MuiButton>
               </span>

@@ -9,7 +9,7 @@ import AuthController from 'app/components/FormikWrapper/AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Image } from 'app/components/Core';
 import { theme } from 'styles/theme/themes';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDefaultLayoutSlice } from '../DefaultLayout/slice';
 import { selectDefaultLayoutState } from '../DefaultLayout/slice/selectors';
 import { signUpFormInitialValues } from './constants';
@@ -23,12 +23,12 @@ export function SignUpPage(_props: Props) {
   const { actions } = useDefaultLayoutSlice();
   const dispatch = useDispatch();
   const signingUpState = useSelector(selectDefaultLayoutState);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      history.push('/home');
+      navigate('/home');
     }
   }, [signingUpState.user]);
 

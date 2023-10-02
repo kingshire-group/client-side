@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import StyledEngineProvider from '@mui/material/StyledEngineProvider';
@@ -19,8 +19,9 @@ import { theme } from 'styles/theme/themes';
 import { theme as muiTheme } from 'styles/theme/muiTheme';
 import { IRoute } from '../utils/routes/types';
 import { routes } from '../utils/routes';
-import CustomRoute from './pages/CustomRoute';
 import { PageNotFound } from './pages/404';
+import Authenticated from './pages/Authenticated';
+import PublicPages from './pages/PublicPages';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -40,12 +41,29 @@ export function App() {
               />
             </Helmet>
             <GlobalStyle />
-            <Switch>
+            <Routes>
+              <Route path="*" element={<PageNotFound />} />
               {routes.map((route: IRoute) => {
-                return <CustomRoute key={uuidv4()} {...route} />;
+                let body: any = null;
+                if (route.isAuthenticated) {
+                  body = (
+                    <Authenticated
+                      path={route.path}
+                      component={route.component}
+                    />
+                  );
+                } else {
+                  body = <PublicPages route={route} />;
+                }
+                return (
+                  <Route
+                    key={uuidv4()}
+                    path={route.path}
+                    element={<>{body}</>}
+                  />
+                );
               })}
-              <Route path="/*" render={() => <PageNotFound />} />
-            </Switch>
+            </Routes>
           </BrowserRouter>
         </MUIThemeProvider>
       </StyledEngineProvider>

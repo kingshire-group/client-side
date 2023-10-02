@@ -1,26 +1,25 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { IProps } from './types';
 import MainLayout from '../MainLayout';
 
 function PublicPages({ route }: IProps) {
+  const location = useLocation();
   const { path, component: Component } = route;
   const token = localStorage.getItem('token');
-  const getCorrectLayout = props => {
+  const getCorrectLayout = () => {
     if (token) {
-      return <Redirect to={{ pathname: '/' }} />;
+      return (
+        <Navigate to="/home" replace state={{ from: location.pathname }} />
+      );
     }
     return (
       <MainLayout>
-        <Component {...props} />
+        <Component />
       </MainLayout>
     );
   };
-  return (
-    <>
-      <Route exact path={path} render={props => getCorrectLayout(props)} />
-    </>
-  );
+  return getCorrectLayout();
 }
 
 export default PublicPages;

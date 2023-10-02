@@ -2,11 +2,11 @@ import React from 'react';
 import lottie404 from 'assets/lotties/404.json';
 import Lottie from 'react-lottie';
 import { Container, Button, Box } from 'app/components/Core';
-import { usePush } from 'utils/hooks/customHooks';
+import { useNavigate } from 'react-router-dom';
 import { theme } from 'styles/theme/themes';
 
 export const PageNotFound = () => {
-  const { handlePush } = usePush({ path: '/home' });
+  const navigate = useNavigate();
   const lottieDefaultOptions = {
     loop: true,
     autoplay: true,
@@ -24,7 +24,7 @@ export const PageNotFound = () => {
         bg={theme.colors.info.main as string}
         variant="paddedOutline"
         width={['90%', '30%', 42]}
-        onClick={handlePush}
+        onClick={() => navigate('/home')}
       >
         Back to Home
       </Button>

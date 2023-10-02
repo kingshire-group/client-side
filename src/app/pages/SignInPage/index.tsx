@@ -9,7 +9,7 @@ import AuthController from 'app/components/FormikWrapper/AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Image } from 'app/components/Core';
 import { theme } from 'styles/theme/themes';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ForgetPasswordController from 'app/components/FormikWrapper/ForgetPassword';
 import { useDefaultLayoutSlice } from '../DefaultLayout/slice';
 import {
@@ -47,13 +47,13 @@ export function SignInPage(_props: Props) {
   const dispatch = useDispatch();
   const signingInState = useSelector(selectDefaultLayoutState);
   const isForgetPasswordLoading = useSelector(selectIsForgetPasswordLoading);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = React.useState(true);
 
   React.useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      history.push('/home');
+      navigate('/home');
     }
   }, [signingInState.user]);
 

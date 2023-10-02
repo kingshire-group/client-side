@@ -1,39 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Redirect, Route, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import DefaultLayout from '../DefaultLayout';
 import { IProps } from './types';
 
-export function useQuery() {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
-
 export default function Authenticated(route: IProps) {
-  const { path, component: Component } = route;
+  const { component: Component } = route;
   const token = localStorage.getItem('token');
-  const dispatch = useDispatch();
-
-  const getCorrectLayout = props => {
-    console.log('------------->', props.path);
+  const location = useLocation();
+  const getCorrectLayout = () => {
     if (token) {
       return (
         <DefaultLayout>
-          <Component {...props} />
+          <Component />
         </DefaultLayout>
       );
       // eslint-disable-next-line
     }
-    return (
-      <Redirect
-        // eslint-disable-next-line
-        to={{ pathname: '/', state: { from: props.location } }}
-      />
-    );
+    return <Navigate to="/home" replace state={{ from: location.pathname }} />;
   };
-  return (
-    <>
-      <Route exact path={path} render={props => getCorrectLayout(props)} />
-    </>
-  );
+  return getCorrectLayout();
 }
