@@ -10,6 +10,10 @@ import { Visibility, VisibilityOff } from 'styled-icons/material';
 import { IAuthProps } from './types';
 import FormControl from '../../Form/FormControl';
 import { useHistory } from 'react-router-dom';
+import Divider from '@mui/material/Divider';
+import { GoogleIcon } from 'assets/images';
+import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 
 const AuthController = (props: IAuthProps) => {
   const [inputType, setInputType] = React.useState(true);
@@ -44,34 +48,53 @@ const AuthController = (props: IAuthProps) => {
           px={[3, null]}
           height="auto"
         >
-          <Box width={[7, 8, 9]} height={[9, 10, 11]}>
-            <img
-              // src={require('../../../../assets/images/Asset5.png')}
-              alt="Kingshire logo"
-              width="100%"
-              height="100%"
-            />
-          </Box>
-          <Spacer mb={3} />
+          <Typography
+            color="#3563BB"
+            fontSize={11}
+            fontStyle="normal"
+            fontWeight={7}
+            m={0}
+            p={0}
+          >
+            Kings Hire
+          </Typography>
           {props.isSignUpPage ? (
-            <Typography fontWeight={5} color="#000000" fontSize={[6, 7, 8]}>
-              Sign Up&nbsp;
-              <span style={{ color: theme.colors.primary.main }}>
-                Kinglancer.
-              </span>
-            </Typography>
+            <>
+              <Typography
+                fontWeight={5}
+                color="#000000"
+                fontSize={[7, 8, 9]}
+                minWidth="100%"
+                textAlign={'center'}
+              >
+                Let’s fill this in...✍️
+              </Typography>
+              <Typography
+                fontWeight={3}
+                color="#000000"
+                fontSize={[4, 5, 6]}
+                minWidth="100%"
+                textAlign={'center'}
+              >
+                In order to kick off your journey with Kings Hire, please
+                complete the form below
+              </Typography>
+            </>
           ) : (
-            <Typography fontWeight={5} color="#000000" fontSize={[6, 7, 8]}>
-              Login to&nbsp;
-              <span style={{ color: theme.colors.primary.main }}>
-                Kinglancer.
-              </span>
+            <Typography
+              fontWeight={5}
+              color="#000000"
+              fontSize={[7, 8, 9]}
+              textAlign="left"
+              minWidth="100%"
+            >
+              Let’s get back in....👋
             </Typography>
           )}
           <Spacer mb={4} />
-          <Box display="flex" flexDirection="column">
-            {props.isSignUpPage && (
-              <Fragment>
+          {props.isSignUpPage ? (
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
                 <Typography>Full Name</Typography>
                 <Spacer mb={2} />
                 <FormControl
@@ -87,45 +110,42 @@ const AuthController = (props: IAuthProps) => {
                     </Typography>
                   )}
                 </ErrorMessage>
-              </Fragment>
-            )}
-            <Fragment>
-              <Typography>Email Address</Typography>
-              <Spacer mb={2} />
-              <FormControl
-                control="input"
-                type="email"
-                name="email"
-                placeholder="johndoe@gmail.com"
-                variant="filled"
-              />
-              <ErrorMessage name="email">
-                {msg => (
-                  <Typography fontWeight={3} color="red" fontSize="11px">
-                    {msg}
-                  </Typography>
-                )}
-              </ErrorMessage>
-            </Fragment>
-            <Spacer mb={2} />
-            <Fragment>
-              <Typography> Password</Typography>
-              <Spacer mb={2} />
-              <PasswordInput
-                icon={inputType ? VisibilityOff : Visibility}
-                handleInputType={handleInputType}
-                inputName="password"
-              />
-              <ErrorMessage name="password">
-                {msg => (
-                  <Typography fontWeight={3} color="red" fontSize="11px">
-                    {msg}
-                  </Typography>
-                )}
-              </ErrorMessage>
-            </Fragment>
-            {props.isSignUpPage && (
-              <Fragment>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography>Email Address</Typography>
+                <Spacer mb={2} />
+                <FormControl
+                  control="input"
+                  type="email"
+                  name="email"
+                  placeholder="johndoe@gmail.com"
+                  variant="filled"
+                />
+                <ErrorMessage name="email">
+                  {msg => (
+                    <Typography fontWeight={3} color="red" fontSize="11px">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography> Password</Typography>
+                <Spacer mb={2} />
+                <PasswordInput
+                  icon={inputType ? VisibilityOff : Visibility}
+                  handleInputType={handleInputType}
+                  inputName="password"
+                />
+                <ErrorMessage name="password">
+                  {msg => (
+                    <Typography fontWeight={3} color="red" fontSize="11px">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Grid>
+              <Grid item xs={6}>
                 <Typography>Confirm Password</Typography>
                 <Spacer mb={2} />
                 <PasswordInput
@@ -140,67 +160,110 @@ const AuthController = (props: IAuthProps) => {
                     </Typography>
                   )}
                 </ErrorMessage>
+              </Grid>
+            </Grid>
+          ) : (
+            <Box display="flex" flexDirection="column">
+              <Fragment>
+                <Typography>Email Address</Typography>
+                <Spacer mb={2} />
+                <FormControl
+                  control="input"
+                  type="email"
+                  name="email"
+                  placeholder="johndoe@gmail.com"
+                  variant="filled"
+                />
+                <ErrorMessage name="email">
+                  {msg => (
+                    <Typography fontWeight={3} color="red" fontSize="11px">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
               </Fragment>
-            )}
-            {!props.isSignUpPage && (
-              <MuiBox
-                sx={{
-                  pt: 2,
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                }}
+              <Spacer mb={2} />
+              <Fragment>
+                <Typography> Password</Typography>
+                <Spacer mb={2} />
+                <PasswordInput
+                  icon={inputType ? VisibilityOff : Visibility}
+                  handleInputType={handleInputType}
+                  inputName="password"
+                />
+                <ErrorMessage name="password">
+                  {msg => (
+                    <Typography fontWeight={3} color="red" fontSize="11px">
+                      {msg}
+                    </Typography>
+                  )}
+                </ErrorMessage>
+              </Fragment>
+
+              <Spacer mb={3} />
+              <Button
+                loading={props.isAuthLoading}
+                type="submit"
+                height={['45px']}
+                disabled={props.isSubmittingForm}
               >
-                <MuiButton variant="text" onClick={props.handleToggleIsSignIn}>
-                  Forgot Password?
-                </MuiButton>
-              </MuiBox>
-            )}
-            {props.isSignUpPage ? (
-              <MuiBox
-                sx={{
-                  pt: 2,
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
-                <MuiButton
-                  variant="text"
-                  onClick={() => history.push('/login')}
-                >
-                  Login?
-                </MuiButton>
-              </MuiBox>
-            ) : (
-              <MuiBox
-                sx={{
-                  pt: 2,
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
+                {props.isSignUpPage ? 'Sign Up' : 'Log In'}
+              </Button>
+              {!props.isSignUpPage && (
+                <>
+                  <Spacer mb={3} />
+                  <Divider>or</Divider>
+                </>
+              )}
+            </Box>
+          )}
+        </Box>
+        {props.isSignUpPage ? (
+          <MuiBox
+            sx={{
+              pt: 2,
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <MuiButton variant="text" onClick={() => history.push('/login')}>
+              Login?
+            </MuiButton>
+          </MuiBox>
+        ) : (
+          <MuiBox
+            sx={{
+              pt: 2,
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <IconButton color="inherit" onClick={() => {}} sx={{}}>
+              <GoogleIcon width={20} height={20} />
+            </IconButton>
+            <Typography>
+              New to Kings Hire?
+              <span>
                 <MuiButton
                   variant="text"
                   onClick={() => history.push('/signup')}
                 >
-                  Don't have account register?
+                  Register
                 </MuiButton>
-              </MuiBox>
-            )}
-            <Spacer mb={2} />
-            <Button
-              loading={props.isAuthLoading}
-              type="submit"
-              height={['45px']}
-              disabled={props.isSubmittingForm}
+              </span>
+            </Typography>
+            <MuiButton
+              sx={{ pt: 2, textAlign: 'end' }}
+              variant="text"
+              onClick={props.handleToggleIsSignIn}
             >
-              {props.isSignUpPage ? 'Sign Up' : 'Log In'}
-            </Button>
-            <Spacer mb={3} />
-          </Box>
-        </Box>
+              Forgot Password?
+            </MuiButton>
+          </MuiBox>
+        )}
       </Form>
     </Formik>
   );

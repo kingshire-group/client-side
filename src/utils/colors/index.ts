@@ -1,7 +1,7 @@
 export const appColors = {
-  primary_main: '#0CBC8B',
-  primary_light: '#3CC9A2',
-  primary_dark: '#088361',
+  primary_main: '#1E4AE5',
+  primary_light: '#5379EF',
+  primary_dark: '#1538C4',
   primary_contrastText: '#6EE1A5',
   secondary_main: '#EE5149',
   secondary_light: '#F1736D',

@@ -7,35 +7,17 @@ import * as React from 'react';
 import styled from 'styled-components';
 import AuthController from 'app/components/FormikWrapper/AuthForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box } from 'app/components/Core';
+import { Box, Image } from 'app/components/Core';
 import { theme } from 'styles/theme/themes';
 import { useHistory } from 'react-router-dom';
 import { useDefaultLayoutSlice } from '../DefaultLayout/slice';
 import { selectDefaultLayoutState } from '../DefaultLayout/slice/selectors';
 import { signUpFormInitialValues } from './constants';
 import { ISignUpFormValues } from './types';
+import { signUpImage } from 'assets/images';
+import { ImageContainer } from '../SignInPage';
 
 interface Props {}
-
-const ImageContainer = styled.div`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background-color: #e5e5e5;
-
-  ${theme.mediaQueries.sm} {
-    display: flex;
-    width: 50%;
-  }
-  ${theme.mediaQueries.md} {
-    display: flex;
-    width: 50%;
-  }
-  ${theme.mediaQueries.lg} {
-    display: flex;
-    width: 60%;
-  }
-`;
 
 export function SignUpPage(_props: Props) {
   const { actions } = useDefaultLayoutSlice();
@@ -55,7 +37,16 @@ export function SignUpPage(_props: Props) {
   };
 
   return (
-    <Box display="flex" flex={1}>
+    <Box display="flex" flex={1} pt={[null, 5]}>
+      <ImageContainer>
+        <Box
+          display="flex"
+          width={[null, 260, 340, 453]}
+          height={[null, 240, 320, 420]}
+        >
+          <Image width="100%" height="100%" src={signUpImage} />
+        </Box>
+      </ImageContainer>
       <Box
         display="flex"
         bg={'#ffffff'}
@@ -71,13 +62,6 @@ export function SignUpPage(_props: Props) {
           isSignUpPage
         />
       </Box>
-      <ImageContainer>
-        <Box
-          display="flex"
-          width={[null, 280, 360, 576]}
-          height={[null, 260, 340, 533]}
-        ></Box>
-      </ImageContainer>
     </Box>
   );
 }

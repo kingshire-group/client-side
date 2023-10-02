@@ -27,7 +27,7 @@ export let theme = createTheme({
     },
     h4: {
       fontSize: '14px',
-      fontFamily: 'Mullish',
+      fontFamily: 'Poppins',
       fontWeight: 700,
     },
     h5: {
@@ -36,12 +36,12 @@ export let theme = createTheme({
     },
     h6: { fontSize: '24px', fontWeight: 600 },
     subtitle1: {
-      fontFamily: 'Jost',
+      fontFamily: 'Poppins',
       fontSize: '15px',
       fontWeight: 600,
     },
     subtitle2: {
-      fontFamily: 'Jost',
+      fontFamily: 'Poppins',
       fontSize: '20px',
       fontWeight: 600,
     },
@@ -50,12 +50,12 @@ export let theme = createTheme({
       fontWeight: 300,
     },
     body2: {
-      fontFamily: 'Jost',
+      fontFamily: 'Poppins',
       weight: 400,
       fontSize: '8px',
     },
     button: {
-      fontFamily: 'Jost',
+      fontFamily: 'Poppins',
       fontSize: '14px',
       fontWeight: 600,
     },

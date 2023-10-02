@@ -53,7 +53,7 @@ const variants = {
 };
 
 export const Typography = styled('p')<TextProps>`
-  font-family: 'DefaultFont';
+  font-family: 'Poppins-SemiBold';
   min-width: 0;
   margin: ${props => props.margin || theme.spaces[1]};
   color: ${props => props.color};

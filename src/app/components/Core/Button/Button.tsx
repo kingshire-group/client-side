@@ -32,7 +32,7 @@ export const BaseButton = styled('button')<ButtonProps>`
   margin: 3;
   min-width: ${theme.sizes[18]};
   font-size: ${(props: FontSizeProps) => props.fontSize || theme.fontSizes[5]};
-  font-family: 'DefaultFont';
+  font-family: 'Poppins-Medium';
   transition: all 0.3s ease;
   outline: none;
   :hover {

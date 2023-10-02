@@ -253,9 +253,9 @@ export const theme: DefaultTheme = {
     },
     coffee: '#444040',
     primary: {
-      main: '#0CBC8B',
-      dark: '#088361',
-      light: '#3CC9A2',
+      main: '#1E4AE5',
+      dark: '#1538C4',
+      light: '#5379EF',
     },
     secondary: {
       main: '#EE5149',
